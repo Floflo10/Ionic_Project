@@ -16,7 +16,7 @@ import { Pizza } from '../../models/pizza'
 
     //private readonly url = "http://localhost:8080/pizza/";
     //private readonly url = "http://10.13.0.248:3000/pizza"
-    private readonly url = "http://10.13.0.248:3000/ingredients";
+    private readonly url = "http://10.13.0.248:3000/pizza";
 
     constructor(private http: HttpClient) {
       console.log('Hello PizzaServiceProvider Provider');
@@ -28,10 +28,22 @@ import { Pizza } from '../../models/pizza'
 
     get() {
       let rt:Array<Pizza> = new Array<Pizza>();
-    this.http.get(this.url).subscribe(data => {
-   //   this.results = data['results'];
-      console.log(data);
+    return new Promise<Array<Pizza>>(resolve => {
+      this.http.get(this.url)
+      .subscribe((data:Array<any>) => {
+        for (let i = 0; i < data.length; i++)
+        {
+          rt.push(new Pizza(data[i]['id'], data[i]['name'], data[i]['desc'], data[i]['picture'], data[i]['price']))
+          //data[i]['ingredients'],
+        }
+        resolve(rt);
+        console.log(data);
       });
+
+    });
+
+    //this.http.get(this.url).subscribe(data => {
+   //   this.results = data['results'];
 
     }
 
