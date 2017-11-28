@@ -1,16 +1,20 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { PizzaService } from '../../providers/pizza-service/pizza-service';
+import { Pizza } from '../../models/pizza'
+
 
 @Component({
   selector: 'page-list',
   templateUrl: 'list.html'
 })
+
 export class ListPage {
   selectedItem: any;
   icons: string[];
   items: Array<{title: string, note: string, icon: string}>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private pizzaService: PizzaService) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
 
@@ -26,7 +30,11 @@ export class ListPage {
         icon: this.icons[Math.floor(Math.random() * this.icons.length)]
       });
     }
+
+    this.pizzaService.get();
   }
+
+
 
   itemTapped(event, item) {
     // That's right, we're pushing to ourselves!
@@ -34,4 +42,6 @@ export class ListPage {
       item: item
     });
   }
+
+
 }
