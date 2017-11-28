@@ -16,7 +16,7 @@ import { Pizza } from '../../models/pizza'
 
     //private readonly url = "http://localhost:8080/pizza/";
     //private readonly url = "http://10.13.0.248:3000/pizza"
-    private readonly url = "http://10.13.0.248:3000/pizza";
+    private readonly url = "http://10.13.0.248:3000/pizza2";
 
     constructor(private http: HttpClient) {
       console.log('Hello PizzaServiceProvider Provider');
