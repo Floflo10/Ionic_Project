@@ -9,9 +9,20 @@
 
 <ion-content>
 
-<p *ngFor= "let item of items">
-    ID : {{item.id}} <br> Name : {{item.name}} <br> Desc : {{item.desc}} <br> Price : {{item.price}}
-  </p>
+<button ion-button color="secondary" (click)="modal()">Ajouter</button>
+
+<ion-card *ngFor= "let item of items">
+  <ion-card-header>
+    ID : {{item.id}} <br> Name : {{item.name}}
+  </ion-card-header>
+  <img src={{item.picture}}/>
+  <ion-card-content>
+    Desc : {{item.desc}} <br> Price : {{item.price}}
+  </ion-card-content>
+  <button ion-button color="secondary" (click)="add()">Modifier</button>
+  <button ion-button color="secondary" (click)="add()">Supprimer</button>
+  <button ion-button color="secondary" (click)="add()">Ajouter au Panier</button>
+  </ion-card>
 
 </ion-content>
 

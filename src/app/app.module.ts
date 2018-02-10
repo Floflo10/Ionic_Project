@@ -5,6 +5,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { ModalformPage } from '../pages/modalform/modalform';
 import { HttpClientModule } from '@angular/common/http';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -16,7 +17,8 @@ import { PizzaService } from '../providers/pizza-service/pizza-service';
   declarations: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    ModalformPage
   ],
   imports: [
     BrowserModule,
@@ -27,7 +29,8 @@ import { PizzaService } from '../providers/pizza-service/pizza-service';
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    ModalformPage
   ],
   providers: [
     StatusBar,

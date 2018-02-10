@@ -1,0 +1,54 @@
+<!--
+  Generated template for the ModalformPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+  [(ngModel)]="value"
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">Close</button>
+    </ion-buttons>
+    <ion-title>Ajouter ou Modifier</ion-title>
+</ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+<form [formGroup]="pizzaForm" (ngSubmit)="onSubmit(pizzaForm.value)">
+
+  <ion-item>
+    <ion-label floating>Nom</ion-label>
+    <ion-input formControlName="name" type="text"></ion-input>
+  </ion-item>
+
+   <ion-item>
+    <ion-label floating>Description</ion-label>
+    <ion-input formControlName="desc" type="text"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Image</ion-label>
+    <ion-input formControlName="picture" type="text"></ion-input>
+  </ion-item>
+
+    <ion-item>
+    <ion-label floating>Prix</ion-label>
+    <ion-input formControlName="price" type="number"></ion-input>
+  </ion-item>
+
+  <ion-row>
+    <ion-col text-center>
+      <button ion-button block color="secondary" type="submit">
+        Valider
+      </button>
+    </ion-col>
+  </ion-row>
+
+
+</form>
+
+</ion-content>

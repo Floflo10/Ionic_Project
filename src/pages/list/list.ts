@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { PizzaService } from '../../providers/pizza-service/pizza-service';
-import { Pizza } from '../../models/pizza'
+import { Pizza } from '../../models/pizza';
+import { ModalformPage } from '../modalform/modalform';
 
 
 @Component({
@@ -12,18 +13,33 @@ import { Pizza } from '../../models/pizza'
 export class ListPage {
 
   items: Array<Pizza> = new Array<Pizza>();
+  item: Pizza;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private pizzaService: PizzaService) {
-    // If we navigated to this page, we will have an item available as a nav param
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, private pizzaService: PizzaService) {
 
-    // Let's populate this page with some filler content for funzies
 
     this.pizzaService.get().then(data => {
       this.items = data;
     });
 
+/*      this.pizzaService.post().then(data => {
+      this.item = data;
+    }); */
+
+          //this.pizzaService.delete(9);
+
+         // this.pizzaService.put(8);
+
+   /* this.pizzaService.getId(6).then(data => {
+      this.item = data;
+      console.log(data);
+    }); */
+
   }
 
-
+  modal() {
+    let myModal = this.modalCtrl.create(ModalformPage);
+    myModal.present();
+  }
 
 }
