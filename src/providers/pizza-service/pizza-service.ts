@@ -86,23 +86,13 @@ import { Pizza } from '../../models/pizza'
 
  }
 
- put(id: number) {
+ put(id: number, postParam: Pizza) {
 
-   let postParam = {
-     name: 'res',
-     desc: 'teau',
-     picture: 'Je suis une photo qui vouille',
-     price: 80,
-     ingredients: ['test', 'mouille']
-   }
-
-   let rt:Pizza;
    return new Promise<Pizza>(resolve => {
      this.http.put(this.url + id, postParam, {
        headers: new HttpHeaders().append( 'Content-Type', 'application/json' ),})
      .subscribe((data:any) => {
-       rt = new Pizza(data['id'], data['name'], data['desc'], data['picture'], data['price']);
-       resolve(rt);
+       resolve();
      });
 
    });

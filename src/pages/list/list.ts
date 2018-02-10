@@ -37,9 +37,18 @@ export class ListPage {
 
   }
 
-  modal() {
+  add() {
     let myModal = this.modalCtrl.create(ModalformPage);
     myModal.present();
+  }
+
+    change(id: number) {
+    let myModal = this.modalCtrl.create(ModalformPage, {id: id});
+    myModal.present();
+  }
+
+    suppr(id: number) {
+    this.pizzaService.delete(id);
   }
 
 }

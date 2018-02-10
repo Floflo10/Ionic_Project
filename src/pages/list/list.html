@@ -9,7 +9,7 @@
 
 <ion-content>
 
-<button ion-button color="secondary" (click)="modal()">Ajouter</button>
+<button ion-button color="secondary" (click)="add()">Ajouter</button>
 
 <ion-card *ngFor= "let item of items">
   <ion-card-header>
@@ -19,9 +19,9 @@
   <ion-card-content>
     Desc : {{item.desc}} <br> Price : {{item.price}}
   </ion-card-content>
-  <button ion-button color="secondary" (click)="add()">Modifier</button>
-  <button ion-button color="secondary" (click)="add()">Supprimer</button>
-  <button ion-button color="secondary" (click)="add()">Ajouter au Panier</button>
+  <button ion-button color="secondary" (click)="change(item.id)">Modifier</button>
+  <button ion-button color="secondary" (click)="suppr(item.id)">Supprimer</button>
+  <button ion-button color="secondary" (click)="addCart()">Ajouter au Panier</button>
   </ion-card>
 
 </ion-content>

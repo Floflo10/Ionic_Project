@@ -7,10 +7,13 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { ModalformPage } from '../pages/modalform/modalform';
 import { HttpClientModule } from '@angular/common/http';
+import { IonicStorageModule } from '@ionic/storage';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { PizzaService } from '../providers/pizza-service/pizza-service';
+import { CartServiceProvider } from '../providers/cart-service/cart-service';
+import { GlobalVarProvider } from '../providers/global-var/global-var';
 
 
 @NgModule({
@@ -36,7 +39,10 @@ import { PizzaService } from '../providers/pizza-service/pizza-service';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    PizzaService
+    IonicStorageModule,
+    PizzaService,
+    CartServiceProvider,
+    GlobalVarProvider
   ]
 })
 export class AppModule {}

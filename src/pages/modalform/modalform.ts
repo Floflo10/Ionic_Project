@@ -19,10 +19,12 @@ export class ModalformPage {
 
   public pizzaForm: FormGroup;
   pizza : Pizza = new Pizza();
-  test = true;
+  test = false;
+  id: number;
 
   constructor(public navCtrl: NavController, public viewCtrl: ViewController, public navParams: NavParams, private pizzaService: PizzaService, public formBuilder: FormBuilder) {
 
+this.id = navParams.get('id');
 
     console.log(this.pizza);
 
@@ -33,10 +35,9 @@ export class ModalformPage {
       price: ['', Validators.compose([Validators.required])]
     });
 
-    if (this.test = true)
+    if (this.test == true)
     {
-
-      this.pizzaService.getId(6).then(data => {
+      this.pizzaService.getId(this.id).then(data => {
         this.pizza = data;
         console.log(this.pizza);
         this.pizzaForm = formBuilder.group({
@@ -60,7 +61,17 @@ export class ModalformPage {
     this.pizza.desc = value.desc;
     this.pizza.price = value.price;
 
-    this.pizzaService.post(this.pizza);
+    if (this.test == true)
+    {
+      console.log(this.id);
+      this.pizzaService.put(this.id, this.pizza);
+    }
+
+else if (this.test == false) {
+      this.pizzaService.post(this.pizza);
+      console.log("Je suis une nouvelle pizza ajoutée !")
+}
+
 
 
     }
