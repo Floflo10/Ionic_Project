@@ -5,10 +5,14 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+
+import { CartPage } from '../pages/cart/cart';
+
 import { ModalformPage } from '../pages/modalform/modalform';
 import { HttpClientModule } from '@angular/common/http';
-import { IonicStorageModule } from '@ionic/storage';
 
+import { Camera } from '@ionic-native/camera';
+import { IonicStorageModule } from '@ionic/storage';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { PizzaService } from '../providers/pizza-service/pizza-service';
@@ -21,25 +25,28 @@ import { GlobalVarProvider } from '../providers/global-var/global-var';
     MyApp,
     HomePage,
     ListPage,
+    CartPage,
     ModalformPage
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
     ListPage,
+    CartPage,
     ModalformPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    IonicStorageModule,
+    Camera,
     PizzaService,
     CartServiceProvider,
     GlobalVarProvider

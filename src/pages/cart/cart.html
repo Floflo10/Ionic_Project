@@ -7,12 +7,31 @@
 <ion-header>
 
   <ion-navbar>
+        <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>cart</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-
 <ion-content padding>
+  <ion-list *ngFor= "let item of items">
+    <ion-item>
+      {{item.name}}
+      <br>
+      Price : {{item.price}}€
+      <ion-avatar item-start>
+        <img src={{item.picture}}/>
+      </ion-avatar>
+    </ion-item>
+    Quantity : <ion-input type="number" [(ngModel)]="item.qty"></ion-input>
+
+  </ion-list>
+
+  Total Price: {{cost}}€ TTC <br>
+
+  <button ion-button color="secondary" (click)="mod()">Modifier</button>
+  <button ion-button color="secondary" (click)="debug()">D</button>
 
 </ion-content>

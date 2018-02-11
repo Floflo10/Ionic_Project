@@ -20,8 +20,9 @@
     Desc : {{item.desc}} <br> Price : {{item.price}}
   </ion-card-content>
   <button ion-button color="secondary" (click)="change(item.id)">Modifier</button>
-  <button ion-button color="secondary" (click)="suppr(item.id)">Supprimer</button>
-  <button ion-button color="secondary" (click)="addCart()">Ajouter au Panier</button>
+  <button ion-button color="secondary" (click)="suppr(item.id)">Supprimer</button> <br>
+  Quantity : <ion-input type="number" [(ngModel)]="qty"></ion-input>
+  <button ion-button color="secondary" (click)="addCart(item.id, qty)">Ajouter au Panier</button>
   </ion-card>
 
 </ion-content>

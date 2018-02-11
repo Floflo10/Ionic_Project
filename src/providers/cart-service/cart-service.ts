@@ -2,12 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 
-/*
-  Generated class for the CartServiceProvider provider.
 
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class CartServiceProvider {
 
@@ -15,4 +10,49 @@ export class CartServiceProvider {
     console.log('Hello CartServiceProvider Provider');
   }
 
-}
+
+  add(id: number, qtn: number) {
+
+    if (qtn == 0){}
+
+      else{
+
+        this.storage.get(id.toString()).then(data=> {
+          if(data)
+          {
+            this.storage.set(id.toString(), data + qtn);
+          }
+          else
+          {
+            this.storage.set(id.toString(), qtn);
+          }
+        });
+
+      }
+    }
+
+
+    change(id: number, qtn: number)
+    {
+      if (qtn == 0){
+
+        this.storage.remove(id.toString());
+      }
+
+      else{
+
+        this.storage.set(id.toString(), qtn);
+      }
+
+    }
+
+    remove(id: number, qtn: number)
+    {
+
+      this.storage.remove(id.toString());
+
+    }
+
+  }
+
+
