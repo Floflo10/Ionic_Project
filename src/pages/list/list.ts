@@ -5,8 +5,9 @@ import { Pizza } from '../../models/pizza';
 import { CartServiceProvider } from '../../providers/cart-service/cart-service';
 import { GlobalVarProvider } from '../../providers/global-var/global-var';
 import { ModalformPage } from '../modalform/modalform';
-import { Storage } from '@ionic/storage';
+import { ModalCardPage } from '../modalcard/modalcard';
 
+import { CartPage } from '../cart/cart';
 
 @Component({
   selector: 'page-list',
@@ -19,7 +20,7 @@ export class ListPage {
   item: Pizza;
   public qty: number = 0;
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, private cartService: CartServiceProvider, private pizzaService: PizzaService, public global: GlobalVarProvider, private storage: Storage) {
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, private cartService: CartServiceProvider, private pizzaService: PizzaService, public global: GlobalVarProvider) {
 
     this.update();
     console.log(this.items);
@@ -59,6 +60,13 @@ export class ListPage {
 
   }
 
+    cardDetails(id: number) {
+    let myModal = this.modalCtrl.create(ModalCardPage, {id: id});
+
+    myModal.present();
+
+  }
+
   suppr(id: number) {
     this.pizzaService.delete(id).then(bloup => this.update());
     console.log("NOOOOONNN JE FOOONNNDDDD !");
@@ -66,6 +74,10 @@ export class ListPage {
 
   addCart(id: number, qty: number) {
     this.cartService.add(id, qty);
+  }
+
+  goCart() {
+    this.navCtrl.push(CartPage);
   }
 
 

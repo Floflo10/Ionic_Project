@@ -1,18 +1,32 @@
-<ion-header>
-  <ion-navbar>
+<!--<ion-header>
+  <ion-navbar text-center>
+
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+
+
+  <ion-toolbar no-border-top>
+    <ion-buttons end>
+      <button  *ngIf="!global.admin" ion-button icon-only (click)="goCart()">
+        <ion-icon name="cart"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Accueil</ion-title>
+</ion-toolbar>
+
   </ion-navbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content padding>
-  <h3>Ionic Menu Starter</h3>
+  <h3 text-center>Pizz'App !</h3>
 
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
+  <p text-center>
+    Venez découvrir notre template d'application dédié à la pizza ! Pour commencer choississez qui vosu souhaitez incarner:
   </p>
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+<div class="center">
+  <button ion-button color="secondary" (click)="user(false)">Je veux être un client !</button>
+  <button ion-button color="primary"  (click)="user(true)">Je veux être un Admin !</button> <br>
+</div>
 </ion-content>

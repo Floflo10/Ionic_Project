@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PizzaService } from '../../providers/pizza-service/pizza-service';
-import { Pizza } from '../../models/pizza';
 import { Cart } from '../../models/cart';
+import { GlobalVarProvider } from '../../providers/global-var/global-var';
 import { CartServiceProvider } from '../../providers/cart-service/cart-service';
 import { Storage } from '@ionic/storage';
 
@@ -28,7 +28,7 @@ export class CartPage {
   qty: Array<number> = new Array<number>();
   cost: number;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private pizzaService: PizzaService, private cartService: CartServiceProvider, private storage: Storage) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private pizzaService: PizzaService, private cartService: CartServiceProvider, public global: GlobalVarProvider,private storage: Storage) {
 
 
     this.storage.forEach( (value, key) => {

@@ -9,6 +9,7 @@ import { ListPage } from '../pages/list/list';
 import { CartPage } from '../pages/cart/cart';
 
 import { ModalformPage } from '../pages/modalform/modalform';
+import { ModalCardPage } from '../pages/modalcard/modalcard';
 import { HttpClientModule } from '@angular/common/http';
 
 import { Camera } from '@ionic-native/camera';
@@ -26,7 +27,8 @@ import { GlobalVarProvider } from '../providers/global-var/global-var';
     HomePage,
     ListPage,
     CartPage,
-    ModalformPage
+    ModalformPage,
+    ModalCardPage
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,8 @@ import { GlobalVarProvider } from '../providers/global-var/global-var';
     HomePage,
     ListPage,
     CartPage,
-    ModalformPage
+    ModalformPage,
+    ModalCardPage
   ],
   providers: [
     StatusBar,

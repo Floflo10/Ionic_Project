@@ -1,42 +1,68 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar text-center>
+
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>List</ion-title>
+
+
+    <ion-toolbar no-border-top>
+      <ion-buttons end>
+        <button  *ngIf="!global.admin" ion-button icon-only (click)="goCart()">
+          <ion-icon name="cart"></ion-icon>
+        </button>
+      </ion-buttons>
+
+      <ion-buttons end>
+        <button  *ngIf="global.admin" ion-button icon-only (click)="add()">
+          <ion-icon name="add"></ion-icon>
+        </button>
+      </ion-buttons>
+
+      <ion-title>Boutique</ion-title>
+    </ion-toolbar>
+
   </ion-navbar>
 </ion-header>
 
 <ion-content>
 
-<button ion-button color="secondary" (click)="add()">Ajouter</button>
+  <ion-card *ngFor= "let item of items" >
 
-<ion-card *ngFor= "let item of items">
-  <ion-card-header>
-    ID : {{item.id}} <br> Name : {{item.name}}
-  </ion-card-header>
-  <img src={{item.picture}}/>
-  <ion-card-content>
-    Desc : {{item.desc}} <br> Price : {{item.price}}
-  </ion-card-content>
-  <button ion-button color="secondary" (click)="change(item.id)">Modifier</button>
-  <button ion-button color="secondary" (click)="suppr(item.id)">Supprimer</button> <br>
-  Quantity : <ion-input type="number" [(ngModel)]="qty"></ion-input>
-  <button ion-button color="secondary" (click)="addCart(item.id, qty)">Ajouter au Panier</button>
+    <ion-card-header (click)="cardDetails(item.id)">
+
+      <H1>{{item.name}}</H1>
+
+    </ion-card-header>
+
+    <div *ngIf="global.admin" class="center">
+      <H2>ID: {{item.id}}</H2>
+      <button ion-button color="secondary" (click)="change(item.id)">Modifier</button>
+      <button ion-button color="danger" (click)="suppr(item.id)">Supprimer</button>
+    </div>
+
+    <ion-card-content>
+
+      <div (click)="cardDetails(item.id)">
+
+        <img src={{item.picture}}/>
+
+        <div *ngIf="!global.admin">
+          <br>
+          Prix : {{item.price}}€
+          <br>
+        </div>
+
+      </div>
+
+      <div *ngIf="!global.admin">
+        Quantitée : <ion-input type="number" class="inputfield" [(ngModel)]="qty"></ion-input>
+        <button ion-button color="secondary" (click)="addCart(item.id, qty)">Ajouter au Panier</button>
+      </div>
+
+    </ion-card-content>
+
   </ion-card>
 
 </ion-content>
 
-<!--   <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
-      <ion-icon [name]="item.icon" item-start></ion-icon>
-      {{item.title}}
-      <div class="item-note" item-end>
-        {{item.note}}
-      </div>
-    </button>
-  </ion-list>
-  <div *ngIf="selectedItem" padding>
-    You navigated here from <b>{{selectedItem.title}}</b>
-  </div>
-  -->

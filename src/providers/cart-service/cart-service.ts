@@ -20,7 +20,9 @@ export class CartServiceProvider {
         this.storage.get(id.toString()).then(data=> {
           if(data)
           {
-            this.storage.set(id.toString(), data + qtn);
+            console.log(data);
+            let nqtn = parseInt(data) + qtn;
+            this.storage.set(id.toString(), nqtn);
           }
           else
           {
