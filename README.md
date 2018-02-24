@@ -1,29 +1,31 @@
-Ingésup B3 - Martines Florian
+# Pizza Banga !
 
+[![npm version](https://badge.fury.io/js/npm.svg)](https://badge.fury.io/js/npm)
 
-This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
+## Disclamer
 
-## How to use this template
+L'application peut s'avèrer lente sur des appaareil de type mobile. L'utilisation dans le navigateur propose une expérience bien plus confortable.
 
-*This template does not work on its own*. The shared files for each starter are found in the [ionic2-app-base repo](https://github.com/ionic-team/ionic2-app-base).
+## Utilisation de l'application
 
-To use this template, either create a new ionic project using the ionic node.js utility, or copy the files from this repository into the [Starter App Base](https://github.com/ionic-team/ionic2-app-base).
+Cette section regroupe divers conseils et information importantes sur l'utilisatoin de l'application
 
-### With the Ionic CLI:
+### Installation
 
-Take the name after `ionic2-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
-
-```bash
-$ sudo npm install -g ionic cordova
-$ ionic start mySideMenu sidemenu
-```
-
-Then, to run it, cd into `mySideMenu` and run:
+Pour se rappeler des commandes:
 
 ```bash
-$ ionic cordova platform add ios
-$ ionic cordova run ios
+$ npm install
+$ npm cordova platform add android
+$ npm cordova run android
 ```
 
-Substitute ios for android if not on a Mac.
+Remplacez android par ios si vous visez un public plus restreint.
 
+### Administration
+
+Au sein de la partie administration il est possible d'ajouter une pizza depuis le *bandeau de navigation avec le signe +* et de modifier/supprimer des pizza de manière individuel.
+
+### Client
+
+Au sein de la partie client il est possible d'ajouter des pizza à son panier. Bien entendu le panier est perssistant.

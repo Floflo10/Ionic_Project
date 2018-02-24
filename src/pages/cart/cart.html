@@ -20,22 +20,30 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-list *ngFor= "let item of items">
+
+    <div *ngIf="cost == 0 || cost == undefined" class="center">
+      Veillez ajouter au moins un article avant d'accéder au panier !
+    </div>
+
+
+  <div *ngIf="cost > 0">
+  <ion-list *ngFor= "let item of items; let idx=index;">
     <ion-item>
       {{item.name}}
       <br>
-      Price : {{item.price}}€
+      Prix : {{item.price}}€
       <ion-avatar item-start>
         <img src={{item.picture}}/>
       </ion-avatar>
     </ion-item>
-    Quantity : <ion-input type="number" class="inputfield" [(ngModel)]="item.qty"></ion-input>
+    Quantitée : <ion-input type="number" class="inputfield" [(ngModel)]="qty[idx]"></ion-input>
 
   </ion-list>
 
-  Total Price: {{cost}}€ TTC <br>
+  Coût Total: {{cost}}€ TTC <br>
 
-  <button ion-button color="secondary" (click)="mod()">Modifier</button>
-  <button ion-button color="secondary" (click)="debug()">D</button>
+  <button ion-button color="secondary" (tap)="mod()">Actualiser Panier</button>
+  <button ion-button color="primary" (tap)="command()">Commander</button>
+</div>
 
 </ion-content>

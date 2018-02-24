@@ -6,6 +6,7 @@ import { CartServiceProvider } from '../../providers/cart-service/cart-service';
 import { GlobalVarProvider } from '../../providers/global-var/global-var';
 import { ModalformPage } from '../modalform/modalform';
 import { ModalCardPage } from '../modalcard/modalcard';
+import { ToastController } from 'ionic-angular';
 
 import { CartPage } from '../cart/cart';
 
@@ -17,21 +18,28 @@ import { CartPage } from '../cart/cart';
 export class ListPage {
 
   items: Array<Pizza> = new Array<Pizza>();
-  item: Pizza;
-  public qty: number = 0;
+  qty: Array<number> = new Array<number>();
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, private cartService: CartServiceProvider, private pizzaService: PizzaService, public global: GlobalVarProvider) {
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, private cartService: CartServiceProvider, private pizzaService: PizzaService, public global: GlobalVarProvider, private toastCtrl: ToastController) {
 
     this.update();
     console.log(this.items);
 
   }
 
+
   update() {
+    this.toaster('Mise à jours en cours...');
     this.pizzaService.get().then(data => {
       this.items = data;
+
+         for(var z in this.items) {
+           this.qty[z] = 1;
+         }
+
     });
   }
+
 
   add() {
     this.global.change = false;
@@ -45,6 +53,7 @@ export class ListPage {
 
     myModal.present();
   }
+
 
   change(id: number) {
     this.global.change = true;
@@ -60,24 +69,48 @@ export class ListPage {
 
   }
 
-    cardDetails(id: number) {
+
+  cardDetails(id: number) {
     let myModal = this.modalCtrl.create(ModalCardPage, {id: id});
 
     myModal.present();
 
   }
 
+
   suppr(id: number) {
-    this.pizzaService.delete(id).then(bloup => this.update());
+    this.pizzaService.delete(id).then(bloup => {
+      this.toaster('Pizza Supprimée');
+      this.update();
+    });
+
     console.log("NOOOOONNN JE FOOONNNDDDD !");
   }
 
+
   addCart(id: number, qty: number) {
-    this.cartService.add(id, qty);
+    if (qty ==  0 || qty == null)
+    {
+      qty = 1;
+      }
+      this.cartService.add(id, qty);
+    this.toaster('Et Hop ! Dans le panier');
+
+
   }
 
   goCart() {
-    this.navCtrl.push(CartPage);
+    this.navCtrl.setRoot(CartPage);
+  }
+
+
+    toaster(text) {
+    this.toastCtrl.create({
+    message: text,
+    duration: 4000,
+    position: 'bottom'
+  }).present();
+
   }
 
 

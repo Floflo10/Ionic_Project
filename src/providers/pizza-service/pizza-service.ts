@@ -12,7 +12,7 @@ import { Pizza } from '../../models/pizza'
   @Injectable()
   export class PizzaService {
 
-    results: string;
+   // results: string;
 
     //private readonly url = "http://localhost:8080/pizza/";
     //private readonly url = "http://10.13.0.248:3000/pizza"
@@ -35,17 +35,14 @@ import { Pizza } from '../../models/pizza'
         .subscribe((data:Array<any>) => {
           for (let i = 0; i < data.length; i++)
           {
-            rt.push(new Pizza(data[i]['id'], data[i]['name'], data[i]['desc'], data[i]['picture'], data[i]['price']))
-          //data[i]['ingredients'],
+            rt.push(new Pizza(data[i]['id'], data[i]['name'], data[i]['desc'], data[i]['picture'], data[i]['price'], data[i]['ingredients']))
+
         }
         resolve(rt);
         console.log(data);
       });
 
       });
-
-    //this.http.get(this.url).subscribe(data => {
-   //   this.results = data['results'];
 
  }
 
@@ -55,7 +52,7 @@ import { Pizza } from '../../models/pizza'
    return new Promise<Pizza>(resolve => {
      this.http.get(this.url + id)
      .subscribe((data:any) => {
-       rt = new Pizza(data['id'], data['name'], data['desc'], data['picture'], data['price']);
+       rt = new Pizza(data['id'], data['name'], data['desc'], data['picture'], data['price'], data['ingredients']);
        resolve(rt);
      });
 
@@ -78,7 +75,7 @@ import { Pizza } from '../../models/pizza'
      this.http.post(this.url, postParam, {
        headers: new HttpHeaders().append( 'Content-Type', 'application/json' ),})
      .subscribe((data:any) => {
-       rt = new Pizza(data['id'], data['name'], data['desc'], data['picture'], data['price']);
+       rt = new Pizza(data['id'], data['name'], data['desc'], data['picture'], data['price'], data['ingredients']);
        resolve(rt);
      });
 

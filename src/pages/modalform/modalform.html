@@ -9,7 +9,7 @@
 
   <ion-navbar>
     <ion-buttons start>
-      <button ion-button (click)="dismiss()">Close</button>
+      <button ion-button (tap)="dismiss()">Close</button>
     </ion-buttons>
     <ion-title>Editer</ion-title>
   </ion-navbar>
@@ -18,14 +18,18 @@
 
 <ion-content padding>
 
-<img [src]="pizza.picture"/>
-<button ion-button secondary (click)="takePicture()">Editer Image</button>
+  <img [src]="pizza.picture"/>
+  <button ion-button secondary (tap)="takePicture()">Editer Image</button>
 
-  <form [formGroup]="pizzaForm" (ngSubmit)="onSubmit(pizzaForm.value)">
+  <form [formGroup]="pizzaForm">
 
     <ion-item>
       <ion-label floating>Nom</ion-label>
       <ion-input formControlName="name" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="pizzaForm.controls.name.hasError('required') && pizzaForm.controls.name.touched">
+      <p>Ce champ est requis !</p>
     </ion-item>
 
     <ion-item>
@@ -33,20 +37,47 @@
       <ion-input formControlName="desc" type="text"></ion-input>
     </ion-item>
 
+    <ion-item *ngIf="pizzaForm.controls.desc.hasError('required') && pizzaForm.controls.desc.touched">
+      <p>Ce champ est requis !</p>
+    </ion-item>
+
     <ion-item>
       <ion-label floating>Prix</ion-label>
       <ion-input formControlName="price" type="number"></ion-input>
     </ion-item>
 
-    <ion-row>
-      <ion-col text-center>
-        <button ion-button block color="secondary" type="submit">
-          Valider
-        </button>
-      </ion-col>
-    </ion-row>
+    <ion-item *ngIf="pizzaForm.controls.price.hasError('required') && pizzaForm.controls.price.touched">
+      <p>Ce champ est requis !</p>
+    </ion-item>
 
+    <ion-item *ngIf="pizzaForm.controls.price.hasError('min') && pizzaForm.controls.price.touched">
+      <p>Ce champ requiert un nombre positif !</p>
+    </ion-item>
 
   </form>
+
+<br>
+
+<h3>Optionnnel</h3>
+<h4>Ingredient</h4>
+
+<br>
+
+  <div *ngFor="let recoome of ingre; trackBy:trackByIndex; let idx = index;">
+    <ion-item>
+   <ion-label color="primary">{{idx+1}}</ion-label>
+   <ion-input type="text" text-right [(ngModel)]="recoome.value">{{recoome[idx]}}</ion-input>
+ </ion-item>
+<button ion-button block color="danger" (tap)="removeIngre(idx)">Remove</button>
+ </div>
+
+ <ion-row>
+  <ion-col text-center>
+    <button ion-button block color="secondary" [disabled]="!pizzaForm.valid" (tap)="onSubmit(pizzaForm.value)">Valider</button>
+  </ion-col>
+</ion-row>
+
+<button ion-button (tap)="addIngre()">Ajouter Ingredient</button>
+
 
 </ion-content>

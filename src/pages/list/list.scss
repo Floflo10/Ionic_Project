@@ -1,5 +1,20 @@
 page-list {
 
+.rogne {
+  /* just in case, to force correct aspect ratio */
 
+  max-height: 240px; //height of the crop container
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.prix {
+   top: 15px;
+          left: -65px;
+          line-height: 35px;
+          letter-spacing: 1px;
+          color: white;
+  background: #169b62;
+  text-align: center;
+}
 
 }

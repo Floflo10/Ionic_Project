@@ -4,10 +4,21 @@
   border: 1px solid #cecece;
   padding-left: 10px;
   width: 100px;
+  color: black;
+}
+
+  .text {
+    color: black;
+  }
+
+
+.content {
+background: url(../assets/imgs/backG.jpg);
+color: #fff
 }
 
   .center{
-   text-align: center
+   text-align: center;
   }
 
 // App Global Sass

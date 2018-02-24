@@ -1,4 +1,21 @@
 page-home {
 
+.back{
+background: url(../assets/imgs/back.png);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+img {
+  width: 40%
 
+}
+.home {
+align-items: center !important;
+
+    text-align: center;
+    color: blank;
+
+}
 }

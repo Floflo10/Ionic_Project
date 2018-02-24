@@ -7,7 +7,10 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Informations</ion-title>
+    <ion-buttons start>
+      <button ion-button (tap)="dismiss()">Close</button>
+    </ion-buttons>
+    <ion-title>Details</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -20,8 +23,10 @@
     ID : {{pizza.id}} <br> Nom : {{pizza.name}}
   </ion-card-header>
   <img src={{pizza.picture}}/>
-  <ion-card-content>
-    Description : {{pizza.desc}} <br> Prix : {{pizza.price}}€
+  <ion-card-content class="text">
+    Description : {{pizza.desc}} <br> <br>
+    Ingredients : {{pizza.ingredients}}
+    <br> <br>Prix : {{pizza.price}}€
   </ion-card-content>
 
   </ion-card>

@@ -8,13 +8,13 @@
 
     <ion-toolbar no-border-top>
       <ion-buttons end>
-        <button  *ngIf="!global.admin" ion-button icon-only (click)="goCart()">
+        <button  *ngIf="!global.admin" ion-button icon-only (tap)="goCart()">
           <ion-icon name="cart"></ion-icon>
         </button>
       </ion-buttons>
 
       <ion-buttons end>
-        <button  *ngIf="global.admin" ion-button icon-only (click)="add()">
+        <button  *ngIf="global.admin" ion-button icon-only (tap)="add()">
           <ion-icon name="add"></ion-icon>
         </button>
       </ion-buttons>
@@ -27,42 +27,45 @@
 
 <ion-content>
 
-  <ion-card *ngFor= "let item of items" >
+  <ion-row>
+    <ion-col col-lg-3 *ngFor= "let item of items; let idx = index; trackBy:trackByIndex;" >
+      <ion-card>
 
-    <ion-card-header (click)="cardDetails(item.id)">
+        <ion-card-header (tap)="cardDetails(item.id)">
 
-      <H1>{{item.name}}</H1>
+          <H1>{{item.name}}</H1>
 
-    </ion-card-header>
+        </ion-card-header>
 
-    <div *ngIf="global.admin" class="center">
-      <H2>ID: {{item.id}}</H2>
-      <button ion-button color="secondary" (click)="change(item.id)">Modifier</button>
-      <button ion-button color="danger" (click)="suppr(item.id)">Supprimer</button>
-    </div>
-
-    <ion-card-content>
-
-      <div (click)="cardDetails(item.id)">
-
-        <img src={{item.picture}}/>
-
-        <div *ngIf="!global.admin">
-          <br>
-          Prix : {{item.price}}€
-          <br>
+        <div *ngIf="global.admin" class="center">
+          <H2>ID: {{item.id}}</H2>
+          <button ion-button color="secondary" (tap)="change(item.id)">Modifier</button>
+          <button ion-button color="danger" (tap)="suppr(item.id)">Supprimer</button>
         </div>
 
-      </div>
+        <ion-card-content>
 
-      <div *ngIf="!global.admin">
-        Quantitée : <ion-input type="number" class="inputfield" [(ngModel)]="qty"></ion-input>
-        <button ion-button color="secondary" (click)="addCart(item.id, qty)">Ajouter au Panier</button>
-      </div>
+          <div (tap)="cardDetails(item.id)">
 
-    </ion-card-content>
+            <div class="rogne">
+              <img src={{item.picture}}/>
+            </div>
 
-  </ion-card>
+            <div *ngIf="!global.admin" class="prix">
+              Prix : {{item.price}}€
+            </div>
 
+          </div>
+
+          <div *ngIf="!global.admin" class="text">
+            Quantitée : <ion-input  type="number" class="inputfield" [(ngModel)]="qty[idx]"></ion-input>
+            <button ion-button color="secondary" (tap)="addCart(item.id, qty[idx])">Ajouter au Panier</button>
+          </div>
+
+        </ion-card-content>
+
+      </ion-card>
+    </ion-col>
+  </ion-row>
 </ion-content>
 

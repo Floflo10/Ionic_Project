@@ -12,11 +12,13 @@ export class GlobalVarProvider {
 
  public admin: boolean;
  public change: boolean;
+ public command: boolean;
 
   constructor(public http: HttpClient) {
 
     this.admin = false;
     this.change = false;
+    this.command = false;
     console.log('Hello GlobalVarProvider Provider');
 
 

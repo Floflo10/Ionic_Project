@@ -4,7 +4,8 @@ export class Pizza {
     public name: string = "",
     public desc: string = "",
     public picture: string = "",
-    public price: number = null){
+    public price: number = null,
+    public ingredients: Array<String> = null){
 
   }
 

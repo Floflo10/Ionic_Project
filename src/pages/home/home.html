@@ -8,7 +8,7 @@
 
   <ion-toolbar no-border-top>
     <ion-buttons end>
-      <button  *ngIf="!global.admin" ion-button icon-only (click)="goCart()">
+      <button  *ngIf="!global.admin" ion-button icon-only (tap)="goCart()">
         <ion-icon name="cart"></ion-icon>
       </button>
     </ion-buttons>
@@ -18,15 +18,17 @@
   </ion-navbar>
 </ion-header> -->
 
-<ion-content padding>
-  <h3 text-center>Pizz'App !</h3>
+<ion-content class="back" padding>
+  <div class="home" >
 
-  <p text-center>
-    Venez découvrir notre template d'application dédié à la pizza ! Pour commencer choississez qui vosu souhaitez incarner:
-  </p>
+    <img src='assets/imgs/logo.png'>
+    <h3>Pizza Bonga !</h3>
 
-<div class="center">
-  <button ion-button color="secondary" (click)="user(false)">Je veux être un client !</button>
-  <button ion-button color="primary"  (click)="user(true)">Je veux être un Admin !</button> <br>
-</div>
+    <p>
+      Venez découvrir notre template d'application dédié à la pizza ! Pour commencer choississez qui vous souhaitez incarner:
+    </p>
+
+    <button  ion-button color="secondary" (tap)="user(false)">Je veux être un client !</button>
+    <button ion-button color="primary"  (tap)="user(true)">Je veux être un Admin !</button> <br>
+  </div>
 </ion-content>

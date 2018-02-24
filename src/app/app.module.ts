@@ -7,13 +7,16 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 
 import { CartPage } from '../pages/cart/cart';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { ModalformPage } from '../pages/modalform/modalform';
 import { ModalCardPage } from '../pages/modalcard/modalcard';
 import { HttpClientModule } from '@angular/common/http';
 
-import { Camera } from '@ionic-native/camera';
 import { IonicStorageModule } from '@ionic/storage';
+import { Camera } from '@ionic-native/camera';
+import { LocalNotifications } from '@ionic-native/local-notifications';
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { PizzaService } from '../providers/pizza-service/pizza-service';
@@ -33,6 +36,7 @@ import { GlobalVarProvider } from '../providers/global-var/global-var';
   imports: [
     BrowserModule,
     HttpClientModule,
+    ReactiveFormsModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()
   ],
@@ -50,6 +54,7 @@ import { GlobalVarProvider } from '../providers/global-var/global-var';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Camera,
+    LocalNotifications,
     PizzaService,
     CartServiceProvider,
     GlobalVarProvider
