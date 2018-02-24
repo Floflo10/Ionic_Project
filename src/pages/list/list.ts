@@ -92,8 +92,6 @@ export class ListPage {
     }
     this.cartService.add(id, qty);
     this.toaster('Et Hop ! Dans le panier');
-
-
   }
 
   goCart() {

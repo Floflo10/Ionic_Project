@@ -1,4 +1,4 @@
-# Pizza Banga !
+# Pizza Bonga !
 
 [![npm version](https://badge.fury.io/js/npm.svg)](https://badge.fury.io/js/npm)
 
@@ -12,19 +12,27 @@ Cette section regroupe divers conseils et information importantes sur l'utilisat
 
 ### Installation
 
-Pour se rappeler des commandes:
+*Sachez que vous pouvez remplacez 'android' par 'browser' pour un déploiement sur navigateur ou par 'ios' si vous visez un public plus restreint.*
+
+Il y a deux manière différentes pour procéder à l'installation. Si vous souhaitez directement utiliser l'application **dans les meilleurs conditions** il suffit d'uiliser la commande suivante:
+
+```bash
+$ ionic cordova run android --prod
+```
+
+N'oubliez pas de valider quand l'application proposera d'installer les node_modules.
 
 ```bash
 $ npm install
-$ npm cordova platform add android
-$ npm cordova run android
+$ ionic cordova platform add android
+$ ionic cordova build android
+$ ionic cordova run android
 ```
 
-Remplacez android par ios si vous visez un public plus restreint.
 
 ### Administration
 
-Au sein de la partie administration il est possible d'ajouter une pizza depuis le *bandeau de navigation avec le signe +* et de modifier/supprimer des pizza de manière individuel.
+Au sein de la partie administration il est possible d'ajouter une pizza depuis le **bandeau de navigation avec le signe +** et de modifier/supprimer des pizza de manière individuel.
 
 ### Client
 

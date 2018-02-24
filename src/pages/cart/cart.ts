@@ -31,7 +31,7 @@ import { ListPage } from '../list/list';
 
    constructor(public navCtrl: NavController, public navParams: NavParams, private pizzaService: PizzaService, private cartService: CartServiceProvider, public global: GlobalVarProvider, private storage: Storage, private toastCtrl: ToastController, private localNotifications: LocalNotifications) {
 
-     this.toaster('Mise à jours en cours...');
+     this.toaster('Mise à jours en cours...', false);
      this.storage.forEach( (value, key) => {
 
 
@@ -63,7 +63,7 @@ import { ListPage } from '../list/list';
    command() {
      this.storage.clear();
      this.update();
-     this.toaster('Commande Passé ! Merci pour votre confiance !');
+     this.toaster('Commande Passé ! Merci pour votre confiance !', true);
      this.localNotifications.schedule({
        text: 'Votre pizza est arrivé à votre égout le plus proche !',
        icon: '../assets/imgs/logo.jpg',
@@ -100,12 +100,22 @@ import { ListPage } from '../list/list';
    }
 
 
-   toaster(text) {
+   toaster(text, id) {
+
+     if (id == true) {
      this.toastCtrl.create({
        message: text,
        duration: 4000,
        position: 'middle'
      }).present();
+     }
+     else{
+       this.toastCtrl.create({
+       message: text,
+       duration: 4000,
+       position: 'bottom'
+     }).present();
+     }
 
    }
 

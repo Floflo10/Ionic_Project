@@ -7,10 +7,13 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 
 import { CartPage } from '../pages/cart/cart';
+import { CartPageModule } from '../pages/cart/cart.module';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { ModalformPage } from '../pages/modalform/modalform';
+import { ModalformPageModule } from '../pages/modalform/modalform.module';
 import { ModalCardPage } from '../pages/modalcard/modalcard';
+import { ModalCardPageModule } from '../pages/modalcard/modalcard.module';
 import { HttpClientModule } from '@angular/common/http';
 
 import { IonicStorageModule } from '@ionic/storage';
@@ -28,15 +31,15 @@ import { GlobalVarProvider } from '../providers/global-var/global-var';
   declarations: [
     MyApp,
     HomePage,
-    ListPage,
-    CartPage,
-    ModalformPage,
-    ModalCardPage
+    ListPage
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
+    CartPageModule,
+    ModalformPageModule,
+    ModalCardPageModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()
   ],
