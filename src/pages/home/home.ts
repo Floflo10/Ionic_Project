@@ -13,8 +13,6 @@ export class HomePage {
 
   constructor(public navCtrl: NavController, public global: GlobalVarProvider) {
 
-
-
   }
 
   goCart() {

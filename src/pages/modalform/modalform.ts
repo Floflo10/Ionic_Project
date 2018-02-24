@@ -30,7 +30,6 @@ import { ToastController } from 'ionic-angular';
 
      this.id = navParams.get('id');
 
-     console.log(this.pizza);
 
      this.pizzaForm = formBuilder.group({
        name: ['', Validators.compose([Validators.required, Validators.pattern('.*\\S.*[a-zA-z_-]')])],
@@ -44,7 +43,6 @@ import { ToastController } from 'ionic-angular';
      {
        this.pizzaService.getId(this.id).then(data => {
          this.pizza = data;
-         console.log(this.pizza);
          this.ingre.length = 0;
 
          for(var z in this.pizza.ingredients) {
@@ -77,12 +75,12 @@ import { ToastController } from 'ionic-angular';
      this.ingre.push({value: 'Nouvel Ingredient'});
    }
 
-      removeIngre(index) {
+   removeIngre(index) {
 
 
-    if(index > -1){
-      this.ingre.splice(index, 1);
-    }
+     if(index > -1){
+       this.ingre.splice(index, 1);
+     }
 
    }
 
@@ -110,29 +108,21 @@ import { ToastController } from 'ionic-angular';
 
      for(var z in this.ingre) {
        this.pizza.ingredients[z] = this.ingre[z].value;
-       console.log("PIZZA: " + this.pizza.ingredients[z]);
-       console.log("INGRE: " + this.ingre[z].value);
      }
 
      if (this.global.change == true)
      {
-       console.log(this.id);
        this.pizzaService.put(this.id, this.pizza);
 
-       console.log("Je me sens différente...")
        this.toaster('Modifications prisent en compte !');
-       console.log("ENVOIE: " + this.pizza.ingredients);
        this.dismiss();
      }
 
      else if (this.global.change == false) {
        this.pizzaService.post(this.pizza);
-       console.log("Je suis une nouvelle pizza ajoutée !")
-       console.log("ENVOIE: " + this.pizza.ingredients);
        this.toaster('Nouvelle pizza ajoutée !');
        this.dismiss();
      }
-
 
 
    }

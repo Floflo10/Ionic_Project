@@ -12,20 +12,17 @@ import { Pizza } from '../../models/pizza'
   @Injectable()
   export class PizzaService {
 
-   // results: string;
+/* Adresses Possible  pour le Pizza Service
+    private readonly url = "http://localhost:8080/pizza/";
+    private readonly url = "http://10.13.0.248:3000/pizza"
+    private readonly url = "http://10.13.0.248:3000/pizza2/";
+    private readonly url = "assets/data/pizza.json/";*/
 
-    //private readonly url = "http://localhost:8080/pizza/";
-    //private readonly url = "http://10.13.0.248:3000/pizza"
-    //private readonly url = "http://10.13.0.248:3000/pizza2/";
     private readonly url = "http://kim.jcatania.io:3000/pizza/";
-    //private readonly url = "assets/data/pizza.json/";
+
 
     constructor(private http: HttpClient) {
       console.log('Hello PizzaServiceProvider Provider');
-    }
-
-    sayHello(id: number){
-      console.log("sayHello('" + id + "')");
     }
 
     get() {
@@ -36,75 +33,64 @@ import { Pizza } from '../../models/pizza'
           for (let i = 0; i < data.length; i++)
           {
             rt.push(new Pizza(data[i]['id'], data[i]['name'], data[i]['desc'], data[i]['picture'], data[i]['price'], data[i]['ingredients']))
-
-        }
-        resolve(rt);
-        console.log(data);
-      });
+          }
+          resolve(rt);
+        });
 
       });
 
- }
+    }
 
- getId(id: number) {
+    getId(id: number) {
 
-   let rt:Pizza;
-   return new Promise<Pizza>(resolve => {
-     this.http.get(this.url + id)
-     .subscribe((data:any) => {
-       rt = new Pizza(data['id'], data['name'], data['desc'], data['picture'], data['price'], data['ingredients']);
-       resolve(rt);
-     });
+      let rt:Pizza;
+      return new Promise<Pizza>(resolve => {
+        this.http.get(this.url + id)
+        .subscribe((data:any) => {
+          rt = new Pizza(data['id'], data['name'], data['desc'], data['picture'], data['price'], data['ingredients']);
+          resolve(rt);
+        });
 
-   });
+      });
 
- }
+    }
 
- post(postParam: Pizza) {
+    post(postParam: Pizza) {
 
-/*   let postParam = {
-     name: 'ras',
-     desc: 'teau',
-     picture: 'Je suis une photo',
-     price: 80,
-     ingredients: ['test', 'ouille']
-   } */
+      let rt:Pizza;
+      return new Promise<Pizza>(resolve => {
+        this.http.post(this.url, postParam, {
+          headers: new HttpHeaders().append( 'Content-Type', 'application/json' ),})
+        .subscribe((data:any) => {
+          rt = new Pizza(data['id'], data['name'], data['desc'], data['picture'], data['price'], data['ingredients']);
+          resolve(rt);
+        });
 
-   let rt:Pizza;
-   return new Promise<Pizza>(resolve => {
-     this.http.post(this.url, postParam, {
-       headers: new HttpHeaders().append( 'Content-Type', 'application/json' ),})
-     .subscribe((data:any) => {
-       rt = new Pizza(data['id'], data['name'], data['desc'], data['picture'], data['price'], data['ingredients']);
-       resolve(rt);
-     });
+      });
 
-   });
+    }
 
- }
+    put(id: number, postParam: Pizza) {
 
- put(id: number, postParam: Pizza) {
+      return new Promise<Pizza>(resolve => {
+        this.http.put(this.url + id, postParam, {
+          headers: new HttpHeaders().append( 'Content-Type', 'application/json' ),})
+        .subscribe((data:any) => {
+          resolve();
+        });
 
-   return new Promise<Pizza>(resolve => {
-     this.http.put(this.url + id, postParam, {
-       headers: new HttpHeaders().append( 'Content-Type', 'application/json' ),})
-     .subscribe((data:any) => {
-       resolve();
-     });
+      });
 
-   });
+    }
 
- }
+    delete(id: number){
+      return new Promise<Pizza>(resolve => {
+        this.http.delete(this.url + id)
+        .subscribe((data:any) => {
+          resolve();
+        });
+      });
 
+    }
 
- delete(id: number){
-   return new Promise<Pizza>(resolve => {
-     this.http.delete(this.url + id)
-     .subscribe((data:any) => {
-       resolve();
-     });
-   });
-
- }
-
-}
+  }

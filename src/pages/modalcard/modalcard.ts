@@ -26,13 +26,11 @@ import { Pizza } from '../../models/pizza';
 
      this.pizzaService.getId(this.id).then(data => {
        this.pizza = data;
-       console.log(this.pizza);
-
      });
 
    }
 
-      dismiss() {
+   dismiss() {
      this.viewCtrl.dismiss();
    }
 

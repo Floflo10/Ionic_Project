@@ -4,10 +4,10 @@ import { CartPage } from './cart';
 
 @NgModule({
   declarations: [
-    CartPage,
+  CartPage,
   ],
   imports: [
-    IonicPageModule.forChild(CartPage),
+  IonicPageModule.forChild(CartPage),
   ],
 })
 export class CartPageModule {}

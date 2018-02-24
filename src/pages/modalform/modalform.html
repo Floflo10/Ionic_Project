@@ -56,19 +56,19 @@
 
   </form>
 
-<br>
+  <br>
 
-<h3>Optionnnel</h3>
-<h4>Ingredient</h4>
+  <h3>Optionnnel</h3>
+  <h4>Ingredient</h4>
 
-<br>
+  <br>
 
   <div *ngFor="let recoome of ingre; trackBy:trackByIndex; let idx = index;">
     <ion-item>
-   <ion-label color="primary">{{idx+1}}</ion-label>
-   <ion-input type="text" text-right [(ngModel)]="recoome.value">{{recoome[idx]}}</ion-input>
- </ion-item>
-<button ion-button block color="danger" (tap)="removeIngre(idx)">Remove</button>
+     <ion-label color="primary">{{idx+1}}</ion-label>
+     <ion-input type="text" text-right [(ngModel)]="recoome.value">{{recoome[idx]}}</ion-input>
+   </ion-item>
+   <button ion-button block color="danger" (tap)="removeIngre(idx)">Remove</button>
  </div>
 
  <ion-row>

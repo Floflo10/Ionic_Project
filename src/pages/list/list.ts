@@ -23,8 +23,6 @@ export class ListPage {
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, private cartService: CartServiceProvider, private pizzaService: PizzaService, public global: GlobalVarProvider, private toastCtrl: ToastController) {
 
     this.update();
-    console.log(this.items);
-
   }
 
 
@@ -33,9 +31,9 @@ export class ListPage {
     this.pizzaService.get().then(data => {
       this.items = data;
 
-         for(var z in this.items) {
-           this.qty[z] = 1;
-         }
+      for(var z in this.items) {
+        this.qty[z] = 1;
+      }
 
     });
   }
@@ -84,7 +82,6 @@ export class ListPage {
       this.update();
     });
 
-    console.log("NOOOOONNN JE FOOONNNDDDD !");
   }
 
 
@@ -92,8 +89,8 @@ export class ListPage {
     if (qty ==  0 || qty == null)
     {
       qty = 1;
-      }
-      this.cartService.add(id, qty);
+    }
+    this.cartService.add(id, qty);
     this.toaster('Et Hop ! Dans le panier');
 
 
@@ -104,12 +101,12 @@ export class ListPage {
   }
 
 
-    toaster(text) {
+  toaster(text) {
     this.toastCtrl.create({
-    message: text,
-    duration: 4000,
-    position: 'bottom'
-  }).present();
+      message: text,
+      duration: 4000,
+      position: 'bottom'
+    }).present();
 
   }
 
