@@ -60,7 +60,10 @@
           <div *ngIf="!global.admin" class="text">
             Quantitée : <ion-input  type="number" class="inputfield" [(ngModel)]="qty[idx]"></ion-input>
             <button ion-button color="secondary" (tap)="addCart(item.id, qty[idx])">Ajouter au Panier</button>
+            <button ion-button color="primary"(tap)="cardDetails(item.id)">En savoir Plus</button>
           </div>
+
+
 
         </ion-card-content>
 

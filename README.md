@@ -33,7 +33,9 @@ $ ionic cordova run android
 ### Administration
 
 Au sein de la partie administration il est possible d'ajouter une pizza depuis le **bandeau de navigation avec le signe +** et de modifier/supprimer des pizza de manière individuel.
+Si vous souhaitez voir les détails d'une pizza, il est possible de **cliquer sur la carte** pour afficher les details.
 
 ### Client
 
 Au sein de la partie client il est possible d'ajouter des pizza à son panier. Bien entendu le panier est perssistant.
+Si vous souhaitez voir les détails d'une pizza, il est possible de **cliquer sur la carte** pour afficher les details. Un bouton est aussi disponible pour les plus archaïques.
