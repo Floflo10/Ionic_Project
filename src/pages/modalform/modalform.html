@@ -71,13 +71,13 @@
    <button ion-button block color="danger" (tap)="removeIngre(idx)">Remove</button>
  </div>
 
+<button ion-button (tap)="addIngre()">Ajouter Ingredient</button>
+
  <ion-row>
   <ion-col text-center>
     <button ion-button block color="secondary" [disabled]="!pizzaForm.valid" (tap)="onSubmit(pizzaForm.value)">Valider</button>
   </ion-col>
 </ion-row>
-
-<button ion-button (tap)="addIngre()">Ajouter Ingredient</button>
 
 
 </ion-content>
